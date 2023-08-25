@@ -1,0 +1,159 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <main class="fadein">
+    <h1 class="text-left pt-8 pl-8 pb-0 font-bebas-neue text-4xl">lunch</h1>
+    <section id="section1" class="mt-[-72px]">
+      <div class="pl-8">
+        <h2 class="font-bebas-neue">Deseo "A Coffee Shack"</h2>
+        <p class="font-oswald">
+          My favorite coffee in Phoenix is a place on the eastside. Their
+          speciality drinks and baritas make this a must visit.
+        </p>
+        <a
+          href="https://goo.gl/maps/PCaDA9TFnb49Nu6u6"
+          target=""
+          class="font-bebas-neue hover:text-white">Directions</a
+        >
+      </div>
+    </section>
+    <section id="section2">
+      <div class="pl-8 text-white">
+        <h2 class="font-bebas-neue">Luanas Coffee</h2>
+        <p class="font-oswald">
+          My favorite coffee in Phoenix is a place on the eastside. Their
+          speciality drinks and baritas make this a must visit.
+        </p>
+        <a
+          href="https://goo.gl/maps/PCaDA9TFnb49Nu6u6"
+          target=""
+          class="font-bebas-neue hover:text-black">Directions</a
+        >
+      </div>
+    </section>
+    <section id="section3">
+      <div class="pl-8">
+        <h2 class="font-bebas-neue">Valley Coffee</h2>
+        <p class="font-oswald">
+          My favorite coffee in Phoenix is a place on the eastside. Their
+          speciality drinks and baritas make this a must visit.
+        </p>
+        <a
+          href="https://goo.gl/maps/PCaDA9TFnb49Nu6u6"
+          target=""
+          class="font-bebas-neue hover:text-white">Directions</a
+        >
+      </div>
+    </section>
+    <svg width="100%" height="100%" version="1.1"
+      ><path
+        d="M696.249,193.606c-12.055,-59.12 -57.01,-86.964 -124.504,-78.16c-119.286,34.085 -202.752,83.658 -242.985,151.921c-16.886,21.108 -30.193,54.026 -39.401,76.026"
+        style="fill:none;stroke:#000;stroke-width:2.5px;"></path><path
+        d="M699.327,908.204c0.144,49.436 -22.286,77.609 -67.287,84.52c-47.13,10.57 -93.06,-2.38 -138.255,-29.722l-85.783,-51.533c-43.645,-31.772 -78.659,-70.199 -100.724,-118.762c-25.879,-38.571 -40.293,-85.009 -43.559,-134.241c-4.147,-72.123 15.079,-135.953 45.988,-193.801c18.355,-38.039 44.831,-69.358 71.647,-96.131c35.346,-35.083 73.036,-62.093 114.86,-74.878c36.241,-11.23 71.821,-21.241 114.595,-22.47c36.216,0.519 65.453,-15.617 85.736,-29.803l2.782,666.821Z"
+        style="fill:none;stroke:#000;stroke-width:2.5px;"></path><path
+        d="M393.272,903.125c-16.248,14.394 -35.156,16.528 -58.269,9.161c-43.225,-16.198 -58.995,-46.628 -51.781,-88.971c-30.909,0.66 -50.875,-8.864 -60.152,-28.336c-6.789,-21.509 -3.085,-48.238 15.632,-82.435c-41.27,-8.731 -53.461,-36.706 -55.908,-71.13c2.712,-38.353 18.077,-66.373 46.095,-84.062c-14.091,-13.417 -20.954,-26.731 -13.665,-41.808c0.594,-15.318 20.322,-26.879 35.374,-36.034c-17.581,-27.847 -24.913,-57.436 -14.37,-88.503c12.165,-32.139 39.147,-48.679 79.383,-51.264c10.239,-8.286 5.37,-20.421 20.041,-30.283c10.054,-6.759 29.163,-5.441 39.759,-6.731c-0.851,-20.843 -1.19,-26.192 7.807,-41.281c8.507,-11.672 19.62,-18.293 32.199,-21.654c17.127,-2.412 31.054,0.248 47.328,0.646c9.247,-5.682 15.976,-32.532 26.077,-44.226c16.814,-13.209 40.552,-9.514 61.142,-10.923c24.425,-25.215 50.951,-40.301 80.012,-43.162c55.574,-1.842 72.411,27.586 66.569,99.254"
+        style="fill:none;stroke:#000;stroke-width:2.5px;"></path></svg
+    >
+    <a
+      href="./"
+      id="home"
+      class="fixed bottom-2 font-oswald left-12 hover:text-[#66A182]">home</a
+    >
+    <a
+      href="./breakfast"
+      id="next"
+      class="fixed bottom-2 font-oswald right-12 hover:text-[#66A182]">next</a
+    >
+  </main>
+
+  <style>
+    section {
+      place-content: center;
+      height: 30rem;
+      display: grid;
+    }
+    section:nth-of-type(2) {
+      background: #7a95a5;
+    }
+    svg {
+      width: 100%;
+      fill: none;
+      position: fixed;
+      top: 10%;
+      left: 25%;
+    }
+    svg path {
+      stroke-dasharray: 0;
+      stroke-dashoffset: 0;
+      stroke: black;
+      fill: none !important;
+      stroke-width: 1.5 !important;
+      transition: stroke-dashoffset 1s;
+    }
+
+    @media screen {
+      svg {
+        left: 60%;
+      }
+    }
+  </style>
+
+  <script>
+    const svgpaths = document.querySelectorAll("path");
+    fillPaths();
+    document.addEventListener("scroll", fillPaths);
+
+    function fillPaths() {
+      let scrollPercentage =
+        (document.documentElement.scrollTop + document.body.scrollTop) /
+        (document.documentElement.scrollHeight -
+          document.documentElement.clientHeight);
+
+      for (var i = 0; i < svgpaths.length; i++) {
+        let path = svgpaths[i];
+        let pathLength = path.getTotalLength();
+
+        path.style.strokeDasharray = pathLength.toString();
+        path.style.strokeDashoffset = pathLength.toString();
+
+        let drawLength = pathLength * scrollPercentage;
+
+        path.style.strokeDashoffset = (pathLength - drawLength).toString();
+      }
+    }
+
+    window.addEventListener("scroll", updateTextColor);
+    function updateTextColor() {
+      var home = document.getElementById("home") as HTMLElement;
+      var next = document.getElementById("next") as HTMLElement;
+
+      const { offsetLeft, offsetTop } = home;
+      const backgroundColor = getBackgroundColorAtPosition(
+        offsetLeft,
+        offsetTop
+      );
+
+      if (backgroundColor === "rgb(122, 149, 165)") {
+        home.style.color = "white";
+        next.style.color = "white";
+      } else {
+        home.style.color = "black";
+        next.style.color = "black";
+      }
+    }
+    function getBackgroundColorAtPosition(x: number, y: number): string | null {
+      const element = document.elementFromPoint(x - 4, y - 2);
+      if (element !== null) {
+        var getColor = window
+          .getComputedStyle(element)
+          .getPropertyValue("background");
+
+        return getColor;
+      }
+
+      return null;
+    }
+  </script>
+</Layout>

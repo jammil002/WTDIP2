@@ -1,0 +1,147 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <main class="fadein">
+    <h1 class="text-left pt-8 pl-8 pb-0 font-bebas-neue text-4xl">coffee</h1>
+    <section id="section1" class="mt-[-72px]">
+      <div class="pl-8">
+        <h2 class="font-bebas-neue">Deseo "A Coffee Shack"</h2>
+        <p class="font-oswald">
+          My favorite coffee in Phoenix is a place on the eastside. Their
+          speciality drinks and baritas make this a must visit.
+        </p>
+        <a
+          href="https://goo.gl/maps/PCaDA9TFnb49Nu6u6"
+          target=""
+          class="font-bebas-neue hover:text-white">Directions</a
+        >
+      </div>
+    </section>
+    <section id="section2">
+      <div class="pl-8 text-white">
+        <h2 class="font-bebas-neue">Luanas Coffee</h2>
+        <p class="font-oswald">
+          My favorite coffee in Phoenix is a place on the eastside. Their
+          speciality drinks and baritas make this a must visit.
+        </p>
+        <a
+          href="https://goo.gl/maps/PCaDA9TFnb49Nu6u6"
+          target=""
+          class="font-bebas-neue hover:text-black">Directions</a
+        >
+      </div>
+    </section>
+    <section id="section3">
+      <div class="pl-8">
+        <h2 class="font-bebas-neue">Valley Coffee</h2>
+        <p class="font-oswald">
+          My favorite coffee in Phoenix is a place on the eastside. Their
+          speciality drinks and baritas make this a must visit.
+        </p>
+        <a
+          href="https://goo.gl/maps/PCaDA9TFnb49Nu6u6"
+          target=""
+          class="font-bebas-neue hover:text-white">Directions</a
+        >
+      </div>
+    </section>
+    <a
+      href="./"
+      id="home"
+      class="fixed bottom-2 font-oswald left-12 hover:text-[#66A182]">home</a
+    >
+    <a
+      href="./breakfast"
+      id="next"
+      class="fixed bottom-2 font-oswald right-12 hover:text-[#66A182]">next</a
+    >
+  </main>
+</Layout>
+
+<style>
+  section {
+    place-content: center;
+    height: 30rem;
+    display: grid;
+  }
+  section:nth-of-type(2) {
+    background: #7a95a5;
+  }
+  svg {
+    width: 100%;
+    fill: none;
+    position: fixed;
+    top: 70%;
+    left: 25%;
+  }
+  svg path {
+    stroke-dasharray: 0;
+    stroke-dashoffset: 0;
+    stroke: black;
+    fill: none !important;
+    stroke-width: 1.5 !important;
+    transition: stroke-dashoffset 1s;
+  }
+
+  @media screen {
+    svg {
+      left: 60%;
+    }
+  }
+</style>
+
+<script>
+  const svgpaths = document.querySelectorAll("path");
+  fillPaths();
+  document.addEventListener("scroll", fillPaths);
+
+  function fillPaths() {
+    let scrollPercentage =
+      (document.documentElement.scrollTop + document.body.scrollTop) /
+      (document.documentElement.scrollHeight -
+        document.documentElement.clientHeight);
+
+    for (var i = 0; i < svgpaths.length; i++) {
+      let path = svgpaths[i];
+      let pathLength = path.getTotalLength();
+
+      path.style.strokeDasharray = pathLength.toString();
+      path.style.strokeDashoffset = pathLength.toString();
+
+      let drawLength = pathLength * scrollPercentage;
+
+      path.style.strokeDashoffset = (pathLength - drawLength).toString();
+    }
+  }
+
+  window.addEventListener("scroll", updateTextColor);
+  function updateTextColor() {
+    var home = document.getElementById("home") as HTMLElement;
+    var next = document.getElementById("next") as HTMLElement;
+
+    const { offsetLeft, offsetTop } = home;
+    const backgroundColor = getBackgroundColorAtPosition(offsetLeft, offsetTop);
+
+    if (backgroundColor === "rgb(122, 149, 165)") {
+      home.style.color = "white";
+      next.style.color = "white";
+    } else {
+      home.style.color = "black";
+      next.style.color = "black";
+    }
+  }
+  function getBackgroundColorAtPosition(x: number, y: number): string | null {
+    const element = document.elementFromPoint(x - 4, y - 2);
+    if (element !== null) {
+      var getColor = window
+        .getComputedStyle(element)
+        .getPropertyValue("background");
+
+      return getColor;
+    }
+
+    return null;
+  }
+</script>
